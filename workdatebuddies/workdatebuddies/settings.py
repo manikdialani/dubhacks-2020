@@ -17,12 +17,14 @@ import os
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'nul0=hxu#601)lmg@37k3w34ge0w26yc=62xn!r=nod3v8&riy'
+
+STREAM_API_KEY = 'n7w72uqct6mz' # https://getstream.io/dashboard/
+STREAM_API_SECRET = '4phg3bhnkwcw5pav7gd3cdtsjnsctpzea5673hb974e3c6tja83xh3w5se9qft9e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
+    'djoser',
     'rest_framework',
     'knox',
     'workdate',
@@ -89,6 +93,11 @@ DATABASES = {
     }
 }
 
+DJOSER = {
+    'SERIALIZERS': {
+        'token': 'auth.serializers.StreamTokenSerializer',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
