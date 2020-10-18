@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from knox import views as knox_views
 from workdate.views import RegisterAPI, LoginAPI, UserAPI
 
@@ -24,4 +24,6 @@ urlpatterns = [
     path('api/auth/login_user/', LoginAPI.as_view()),
     path('api/auth/user/', UserAPI.as_view()),
     path('api/auth/logout_user/', knox_views.LogoutView.as_view(), name='logout'),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]
