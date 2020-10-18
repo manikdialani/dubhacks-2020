@@ -1,3 +1,4 @@
 env/
 workdatebuddies/workdate/migrations/
 venv/
+frontend/node_modules
