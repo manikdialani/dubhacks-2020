@@ -10,7 +10,6 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth.base_user import BaseUserManager
-from django.utils.translation import ugettext_lazy as _
 
 # User model
 
@@ -52,7 +51,7 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(
         _('email address'), unique=True, primary_key=True)
-    academic = models.TextField(max_length=255, blank=True, default=None)
+    academic = models.TextField(max_length=255, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
